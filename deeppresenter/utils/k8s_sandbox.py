@@ -47,11 +47,7 @@ def _parse_json_env(name: str, default: Any):
 
 def _merge_dict(dst: dict[str, Any], src: dict[str, Any]) -> dict[str, Any]:
     for key, value in src.items():
-        if (
-            key in dst
-            and isinstance(dst[key], dict)
-            and isinstance(value, dict)
-        ):
+        if key in dst and isinstance(dst[key], dict) and isinstance(value, dict):
             _merge_dict(dst[key], value)
         else:
             dst[key] = value
@@ -282,7 +278,9 @@ class KubernetesSandbox:
             indent=2,
         )
 
-    async def execute_command(self, command: str, timeout: int = DEFAULT_TIMEOUT) -> str:
+    async def execute_command(
+        self, command: str, timeout: int = DEFAULT_TIMEOUT
+    ) -> str:
         """Run a shell command inside the sandbox pod."""
         await self.start()
         wrapped = self.exec_prefix + command

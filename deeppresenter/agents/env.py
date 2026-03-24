@@ -30,6 +30,7 @@ from deeppresenter.utils.constants import (
     TOOL_CUTOFF_LEN,
     WORKSPACE_BASE,
 )
+from deeppresenter.utils.k8s_sandbox import KubernetesSandbox
 from deeppresenter.utils.log import (
     debug,
     error,
@@ -37,7 +38,6 @@ from deeppresenter.utils.log import (
     warning,
 )
 from deeppresenter.utils.mcp_client import MCPClient
-from deeppresenter.utils.k8s_sandbox import KubernetesSandbox
 from deeppresenter.utils.typings import ChatMessage, MCPServer, Role
 
 
